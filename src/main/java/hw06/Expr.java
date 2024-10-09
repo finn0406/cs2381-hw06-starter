@@ -35,10 +35,13 @@ record Expr(String text) {
                 continue;
             }
 
-            // TODO:
-            // if (ch.equals(")")) {
-            //   ...
-        }
+            if (ch.equals(")")) {
+                var a2 = stack.pop();
+                var op = stack.pop();
+                var a1 = stack.pop();
+                var result = applyOp(a1, op, a2);
+                stack.push(result);
+            }
 
         try {
             return Integer.parseInt(stack.pop());
